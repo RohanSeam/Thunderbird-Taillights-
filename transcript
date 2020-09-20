@@ -1,0 +1,219 @@
+# Reading C:/intelFPGA_lite/19.1/modelsim_ase/tcl/vsim/pref.tcl
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:32:16 on May 20,2020
+# vlog -reportprogress 300 ./TaillightsFSM.sv 
+# -- Compiling module TaillightsFSM
+# -- Compiling module TaillightsFSM_tb
+# 
+# Top level modules:
+# 	TaillightsFSM_tb
+# End time: 17:32:16 on May 20,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work TaillightsFSM_tb 
+# Start time: 17:32:16 on May 20,2020
+# Loading sv_std.std
+# Loading work.TaillightsFSM_tb
+# Loading work.TaillightsFSM
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Rohan  Hostname: LAPTOP-MK4EG6G9  ProcessID: 27928
+#           Attempting to use alternate WLF file "./wlftjczxez".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftjczxez
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# Time 		  L  R  H 	 Enable 	 out
+#                    0   0   0   0    1   000000
+#                  105   0   0   1    1   000000
+#                  110   0   0   1    1   111111
+#                  130   0   0   1    1   000000
+#                  150   0   0   1    1   111111
+#                  160   1   0   1    1   111111
+#                  170   1   0   1    1   000000
+#                  190   1   0   1    1   111111
+#                  210   1   0   1    1   000000
+#                  230   1   0   1    1   111111
+#                  235   0   1   1    1   111111
+#                  250   0   1   1    1   000000
+#                  270   0   1   1    1   111111
+#                  290   0   1   1    1   000000
+#                  310   0   1   1    1   111111
+#                  330   0   1   1    1   000000
+#                  340   1   1   1    1   000000
+#                  550   1   0   0    1   000000
+#                  570   1   0   0    1   001000
+#                  590   1   0   0    1   011000
+#                  610   1   0   0    1   111000
+#                  630   1   0   0    1   000000
+#                  650   1   0   0    1   001000
+#                  670   1   0   0    1   011000
+#                  690   1   0   0    1   111000
+#                  695   0   1   0    1   111000
+#                  710   0   1   0    1   000000
+#                  730   0   1   0    1   000100
+#                  750   0   1   0    1   000110
+#                  770   0   1   0    1   000111
+#                  790   0   1   0    1   000000
+#                  810   0   1   0    1   000100
+#                  830   0   1   0    1   000110
+#                  840   0   1   1    1   000000
+#                  870   0   1   1    1   111111
+#                  890   0   1   1    1   000000
+#                  910   0   1   1    1   111111
+#                  930   0   1   1    1   000000
+#                  945   1   0   0    0   000000
+#                 1050   0   1   0    0   000000
+#                 1155   1   1   0    0   000000
+#                 1260   1   1   1    0   000000
+# ** Note: $stop    : ./TaillightsFSM.sv(131)
+#    Time: 1365 ps  Iteration: 0  Instance: /TaillightsFSM_tb
+# Break in Module TaillightsFSM_tb at ./TaillightsFSM.sv line 131
+do runrtl.do
+# 
+# Get rid of current work lib
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# Error 31: Unable to unlink file "C:/Users/Rohan/Documents/Digital System Design/ProjectA/rtl_work/_lib.qdb".
+# Error 133: Unable to remove directory "C:/Users/Rohan/Documents/Digital System Design/ProjectA/rtl_work".
+# 
+# Create work library and map it to 'work'
+# vlib rtl_work
+# ** Error: (vlib-35) Failed to create directory "rtl_work".
+# File exists. (errno = EEXIST)
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Modifying modelsim.ini
+# 
+# Compile Verilog
+#     All Verilog files that are part of this design should have
+#     their own "vlog" line below.
+# vlog -work work +acc "./TaillightsFSM.sv"
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:32:59 on May 20,2020
+# vlog -reportprogress 300 -work work "+acc" ./TaillightsFSM.sv 
+# -- Compiling module TaillightsFSM
+# ** Note: (vlog-143) Recognized 1 FSM in module "TaillightsFSM(verilog)".
+# -- Compiling module TaillightsFSM_tb
+# 
+# Top level modules:
+# 	TaillightsFSM_tb
+# End time: 17:32:59 on May 20,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# Call vsim to invoke simulator
+#     Make sure the last item on the line is the name of the
+#     testbench module you want to execute.
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc" -fsmdebug  TaillightsFSM_tb
+# End time: 17:33:01 on May 20,2020, Elapsed time: 0:00:45
+# Errors: 0, Warnings: 2
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" -fsmdebug TaillightsFSM_tb 
+# Start time: 17:33:01 on May 20,2020
+# Loading sv_std.std
+# Loading work.TaillightsFSM_tb
+# Loading work.TaillightsFSM
+# 
+# Source the wave do file
+#     This should be the file that sets up the signal window for
+#     the module you are testing.
+# do FSM_wave.do
+# onerror {resume}
+# quietly WaveActivateNextPane {} 0
+# add wave -noupdate /TaillightsFSM_tb/Clock
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Rohan  Hostname: LAPTOP-MK4EG6G9  ProcessID: 27928
+#           Attempting to use alternate WLF file "./wlftvkr2x2".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftvkr2x2
+# add wave -noupdate /TaillightsFSM_tb/H
+# add wave -noupdate /TaillightsFSM_tb/L
+# add wave -noupdate /TaillightsFSM_tb/R
+# add wave -noupdate /TaillightsFSM_tb/out
+# add wave -noupdate /TaillightsFSM_tb/Enable
+# TreeUpdate [SetDefaultTree]
+# WaveRestoreCursors {{Cursor 1} {0 ps} 0}
+# quietly wave cursor active 0
+# configure wave -namecolwidth 150
+# configure wave -valuecolwidth 100
+# configure wave -justifyvalue left
+# configure wave -signalnamewidth 0
+# configure wave -snapdistance 10
+# configure wave -datasetprefix 0
+# configure wave -rowmargin 4
+# configure wave -childrowmargin 2
+# configure wave -gridoffset 0
+# configure wave -gridperiod 1
+# configure wave -griddelta 40
+# configure wave -timeline 0
+# configure wave -timelineunits ps
+# update
+# WaveRestoreZoom {0 ps} {1 ns}
+# 
+# Set the window types
+# view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# 
+# Run the simulation
+# run -all
+# Time 		  L  R  H 	 Enable 	 out
+#                    0   0   0   0    1   000000
+#                  105   0   0   1    1   000000
+#                  110   0   0   1    1   111111
+#                  130   0   0   1    1   000000
+#                  150   0   0   1    1   111111
+#                  160   1   0   1    1   111111
+#                  170   1   0   1    1   000000
+#                  190   1   0   1    1   111111
+#                  210   1   0   1    1   000000
+#                  230   1   0   1    1   111111
+#                  235   0   1   1    1   111111
+#                  250   0   1   1    1   000000
+#                  270   0   1   1    1   111111
+#                  290   0   1   1    1   000000
+#                  310   0   1   1    1   111111
+#                  330   0   1   1    1   000000
+#                  340   1   1   1    1   000000
+#                  550   1   0   0    1   000000
+#                  570   1   0   0    1   001000
+#                  590   1   0   0    1   011000
+#                  610   1   0   0    1   111000
+#                  630   1   0   0    1   000000
+#                  650   1   0   0    1   001000
+#                  670   1   0   0    1   011000
+#                  690   1   0   0    1   111000
+#                  695   0   1   0    1   111000
+#                  710   0   1   0    1   000000
+#                  730   0   1   0    1   000100
+#                  750   0   1   0    1   000110
+#                  770   0   1   0    1   000111
+#                  790   0   1   0    1   000000
+#                  810   0   1   0    1   000100
+#                  830   0   1   0    1   000110
+#                  840   0   1   1    1   000000
+#                  870   0   1   1    1   111111
+#                  890   0   1   1    1   000000
+#                  910   0   1   1    1   111111
+#                  930   0   1   1    1   000000
+#                  945   1   0   0    0   000000
+#                 1050   0   1   0    0   000000
+#                 1155   1   1   0    0   000000
+#                 1260   1   1   1    0   000000
+# ** Note: $stop    : ./TaillightsFSM.sv(131)
+#    Time: 1365 ps  Iteration: 0  Instance: /TaillightsFSM_tb
+# Break in Module TaillightsFSM_tb at ./TaillightsFSM.sv line 131
+# 
+# View the entire wave display
+# wave zoomfull
+# 0 ps
+# 1433 ps
+# 
+# End
+# End time: 17:53:17 on May 20,2020, Elapsed time: 0:20:16
+# Errors: 0, Warnings: 2

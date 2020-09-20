@@ -1,0 +1,104 @@
+module TaillightsFSM(Clock, reset, L, R, H, out);
+	
+	input Clock, reset;								// Clock input and reset (high)
+	input H, L, R;     
+	output logic [5:0] out;							// Lc, Lb, La | Ra, Rb, Rc	
+											
+	
+	localparam S0 = 3'h0,					
+				  S1 = 3'h1, 				 
+				  S2 = 3'h2,
+				  S3 = 3'h3,
+				  S4 = 3'h4,
+				  S5 = 3'h5,
+				  S6 = 3'h6,
+				  S7 = 3'h7;
+				  
+	logic [2:0] CurrentState = S0; 
+	logic [2:0] NextState;
+
+	// The output is simply the current state of the machine.
+	assign out = CurrentState;
+	
+	// Define all the state transitions, included the default state, S0.
+	always_comb begin
+		out = 6'b0;
+		case (CurrentState)
+			
+			S0: if (H) NextState = S7;
+				 else if (L && ~R) NextState = S1;
+			    else if (~L && R) NextState = S4;
+				 else NextState = S0;
+				 
+			S1: if (L && ~R) begin 
+					NextState = S2; out = 6'b001000;
+				 end
+				 else NextState = S0;
+		
+			S2: if (L && ~R) begin 
+					NextState = S3; out = 6'b011000;
+				 end
+				 else NextState = S0;
+					
+			S3: begin NextState = S0; out = 6'b111000; end
+			
+			S4: if (~L && R) begin 
+					NextState = S5; out = 6'b000100;
+				 else NextState = S0;
+			
+			S5: if (~L && R) begin 
+					NextState = S6; out = 6'b000110;
+				 end
+				 else NextState = S0;
+			
+			S6: begin NextState = S0; out = 6'b000111; end
+			
+			S7: begin NextState = S0; out = 6'b111111; end
+				
+			default: NextState = S0;
+		endcase
+	end 
+
+	// Propagate the states on the positive edge of the clock signal. 
+	// If reset == 1, reset state to S0.
+	// Otherwise, propagate to the next state. 
+	always_ff @(posedge Clock) begin
+		if (reset) CurrentState <= S0;
+		else if (Enable) begin
+			CurrentState <= NextState;
+		end
+	end 
+endmodule 
+
+module TaillightsFSM_tb();
+	logic Clock, reset, H, L, R;     
+	logic [5:0] out;
+
+	// Instantiate the Tailights FSM.
+	TaillightsFSM DUT(Clock, reset, L, R, H, out);
+	
+	always begin
+		Clock = 0; #10;
+		Clock = 1; #10;
+	end
+	
+	initial begin 
+		$display("Time \t\t  L  R  H\t reset \t out");
+		
+		// Check the hazard signal and see if the tailights are blinking. 
+		reset = 0; L = 0; R = 0; H = 1; #55;
+		L = 1; #75;
+		L = 0; R = 1; #105;
+		L = 1; R = 1; #105;
+		
+		// Check with the hazard off and left turn signal on.
+		H = 0; R = 0; L = 1; #145;
+		L = 0; R = 1; #145;
+		
+		// Check if H takes precedence over R signal. 
+		H = 1; #105;
+	end
+	
+	initial $monitor(Clock,,,,L,,,,R,,,,H,,,,,reset,,,,out);
+	
+endmodule 
